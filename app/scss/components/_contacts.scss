@@ -1,0 +1,18 @@
+.contacts-item {
+  color: var(--dark);
+
+  & .status {
+    color: var(--secondary);
+  }
+
+  @include hover() {
+    color: var(--light);
+    text-decoration: none;
+
+    background-color: var(--primary);
+
+    & .status {
+      color: var(--gray);
+    }
+  }
+}

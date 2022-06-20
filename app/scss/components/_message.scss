@@ -1,0 +1,24 @@
+
+.message {
+  max-width: $message-max-width;
+
+  color: var(--secondary);
+
+  & .media-body {
+    background-color: var(--light);
+  }
+
+  &.self .media-body {
+    color: var(--light);
+
+    background-color: var(--primary);
+
+    & .time {
+      color: var(--gray);
+    }
+  }
+
+  &.self {
+    align-self: flex-end;
+  }
+}
