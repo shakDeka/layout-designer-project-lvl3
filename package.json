@@ -33,6 +33,7 @@
     "stylelint-scss": "^3.18.0"
   },
   "dependencies": {
+    "bootstrap": "^4.6.0",
     "gulp": "^4.0.2"
   }
 }
