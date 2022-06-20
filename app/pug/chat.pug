@@ -1,0 +1,13 @@
+extends layout.pug
+
+block left
+  - var isChatPage = true;
+    include includes/header.pug
+    div(class="h-100 overflow-hidden tab-content")
+        include includes/contacts.pug
+        include includes/chats.pug
+        include includes/profile.pug
+        include includes/dialog.pug
+block right
+  - var isRightBlock = true;
+    include includes/dialog.pug
