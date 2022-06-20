@@ -1,0 +1,36 @@
+header(class="ps-4 pe-5")
+  nav(class="d-flex justify-content-space align-items-center")
+    a(href="index.html" class="py-4")
+      img(alt="Hexlet" src="images/icons/logo.svg" class="logo")
+    -
+      var tabs = {
+        "contacts": {
+          img: "images/icons/people.svg",
+          text: "Контакты",
+          selected: `${page=="index"}`,
+          href: "#contacts",
+        },
+        "chats": {
+          img: "images/icons/chat.svg",
+          text: "Сообщения",
+          selected: `${page=="chat"}`,
+          href: "#chats",
+        },
+        "profile": {
+          img: "images/icons/person.svg",
+          text: "Профиль",
+          selected: "false",
+          href: "#profile",
+        },
+      }
+    ul(class="nav d-flex justify-content-space cg-6 cg-md-5 flex-nowrap" role="tablist")
+      if page=="chat"
+        li(role="presentation" class="d-block d-md-none")
+          a(class="d-md-flex cg-2 color-light fs-0 small-md" id="chat-tab" href="#current-chat" role="tab" data-bs-toggle="tab" aria-controls="current-chat")
+            img(alt="" src="images/icons/chat-left-text.svg" class="nav-img")
+            | Чат
+      each content, tab in tabs
+        li(class="nav-item" role="presentation")
+          a(class="d-md-flex cg-2 color-light fs-0 small-md fs-0 align-items-center" id=`${tab}-tab` data-bs-toggle="tab" href=content.href role="tab" aria-controls=tab aria-selected=content.selected)
+            img(alt=content.text src=`${content.img}` class="nav-img")
+            = content.text

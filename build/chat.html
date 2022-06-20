@@ -1,410 +1,369 @@
 <!DOCTYPE html>
-<html lang="ru">
+<html class="h-100" lang="ru">
 
 <head>
-    <link href="css/style.css" rel="stylesheet">
-    <title>Hexlet Chat (shakDeka)</title>
-    <meta charset="UTF-8">
-    <meta content="width=device-width, initial-scale=1.0" name="viewport">
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  <title>Мессенджер «Hexlet Chat». shakDeka</title>
+  <link rel="stylesheet" href="style.css">
+  <script src="js/jquery.min.js"></script>
+  <script src="js/popper.js"></script>
+  <script src="js/bootstrap.min.js"></script>
 </head>
 
-<body class="bg-gray">
-    <div class="container-xxl vh-100 bg-gray p-xl-4 overflow-hidden">
-        <div class="row h-100 radius-xl bg-white">
-            <div class="col-12 col-xl-4 border-xl-right border-gray h-100 overflow-hidden">
-                <div class="d-flex flex-column-reverse flex-xl-column h-100">
-                    <nav class="header navbar navbar-expand py-4 radius-xl-left-top bg-primary">
-                        <div class="h-100 flex-grow-1 flex-xl-grow-0">
-                            <svg class="h-100 text-white" width="25">
-                                <use xlink:href="./images/icons/sprite.symbol.svg#logo"></use>
-                            </svg>
-                        </div>
-                        <ul class="navbar-nav nav navbar-collapse h-100 justify-content-around nav-pills" id="pills-tab"
-                            role="tablist">
-                            <li class="nav-item h-100 d-xl-none" role="presentation"><a class="text-light h-100"
-                                    id="pills-dialog-tab" href="#current-chat" role="tab" data-toggle="tab"
-                                    aria-controls="pills-dialog" aria-selected="false">
-                                    <svg class="h-100" width="25">
-                                        <use xlink:href="./images/icons/sprite.symbol.svg#chat-left-text"></use>
-                                    </svg></a></li>
-                            <li class="nav-item h-100" role="presentation"><a
-                                    class="text-light h-100 text-decoration-none " id="pills-contacts-tab"
-                                    href="#contacts" role="tab" data-toggle="tab" aria-controls="pills-contacts"
-                                    aria-selected="false">
-                                    <svg class="h-100" width="25">
-                                        <use xlink:href="./images/icons/sprite.symbol.svg#people"></use>
-                                    </svg><span class="d-none d-xl-inline-block small ml-2">Контакты</span></a></li>
-                            <li class="nav-item h-100" role="presentation"><a
-                                    class="text-light h-100 text-decoration-none " id="pills-chats-tab" href="#chats"
-                                    role="tab" data-toggle="tab" aria-controls="pills-chats" aria-selected="true">
-                                    <svg class="h-100" width="25">
-                                        <use xlink:href="./images/icons/sprite.symbol.svg#chat"></use>
-                                    </svg><span class="d-none d-xl-inline-block small ml-2">Сообщения</span></a></li>
-                            <li class="nav-item h-100" role="presentation"><a
-                                    class="text-light h-100 text-decoration-none " id="pills-profile-tab"
-                                    href="#profile" role="tab" data-toggle="tab" aria-controls="pills-profile"
-                                    aria-selected="false">
-                                    <svg class="h-100" width="25">
-                                        <use xlink:href="./images/icons/sprite.symbol.svg#person"></use>
-                                    </svg><span class="d-none d-xl-inline-block small ml-2">Профиль</span></a></li>
-                        </ul>
-                    </nav>
-                    <div class="h-100 overflow-hidden tab-content">
-                        <div class="tab-pane show fade h-100 mt-5 mx-4 " id="contacts" role="tabpanel"
-                            aria-labelledby="pills-contacts-tab">
-                            <h2 class="font-weight-bold">Контакты</h2>
-                            <form class="mt-4 mb-5 py-1 border-bottom border-gray">
-                                <input class="w-100 px-4 py-2 border-0 shadow-none" type="text"
-                                    placeholder="Поиск по контактам">
-                            </form>
-                            <ul class="h-75 block-scrollable list-unstyled">
-                                <li class="mb-5">
-                                    <div class="mb-3">
-                                        <div class="text-muted mb-3">А</div>
-                                        <ul class="list-unstyled">
-                                            <li class="shadow mb-3"><a
-                                                    class="contacts-item media align-items-center px-3" href="#"><img
-                                                        class="avatar" src="./images/avatar_3.jpeg" alt="Avatar">
-                                                    <div class="media-body ml-4  my-4">
-                                                        <div class="font-weight-bold m-0">Алексей Примадонин</div>
-                                                        <div class="status small">Онлайн</div>
-                                                    </div>
-                                                </a></li>
-                                        </ul>
-                                    </div>
-                                </li>
-                                <li class="mb-5">
-                                    <div class="mb-3">
-                                        <div class="text-muted mb-3">B</div>
-                                        <ul class="list-unstyled">
-                                            <li class="shadow mb-3"><a
-                                                    class="contacts-item media align-items-center px-3" href="#"><img
-                                                        class="avatar" src="./images/avatar_4.jpeg" alt="Avatar">
-                                                    <div class="media-body ml-4  my-4">
-                                                        <div class="font-weight-bold m-0">Вениамин Редакторович</div>
-                                                        <div class="status small">Онлайн</div>
-                                                    </div>
-                                                </a></li>
-                                        </ul>
-                                    </div>
-                                </li>
-                                <li class="mb-5">
-                                    <div class="mb-3">
-                                        <div class="text-muted mb-3">Д</div>
-                                        <ul class="list-unstyled">
-                                            <li class="shadow mb-3"><a
-                                                    class="contacts-item media align-items-center px-3" href="#"><img
-                                                        class="avatar" src="./images/avatar_2.jpeg" alt="Avatar">
-                                                    <div class="media-body ml-4  my-4">
-                                                        <div class="font-weight-bold m-0">Джедай Падаванов</div>
-                                                        <div class="status small">Был онлайн вчера</div>
-                                                    </div>
-                                                </a></li>
-                                        </ul>
-                                    </div>
-                                </li>
-                                <li class="mb-5">
-                                    <div class="mb-3">
-                                        <div class="text-muted mb-3">К</div>
-                                        <ul class="list-unstyled">
-                                            <li class="shadow mb-3"><a
-                                                    class="contacts-item media align-items-center px-3" href="#"><img
-                                                        class="avatar" src="./images/avatar_1.jpeg" alt="Avatar">
-                                                    <div class="media-body ml-4  my-4">
-                                                        <div class="font-weight-bold m-0">Кодовёнок Хекслетович</div>
-                                                        <div class="status small">Был онлайн 3 часа назад</div>
-                                                    </div>
-                                                </a></li>
-                                            <li class="shadow mb-3"><a
-                                                    class="contacts-item media align-items-center px-3" href="#"><img
-                                                        class="avatar" src="./images/avatar_5.jpeg" alt="Avatar">
-                                                    <div class="media-body ml-4  my-4">
-                                                        <div class="font-weight-bold m-0">Королева Верстальщина</div>
-                                                        <div class="status small">Была онлайн вчера</div>
-                                                    </div>
-                                                </a></li>
-                                        </ul>
-                                    </div>
-                                </li>
-                                <li class="mb-5">
-                                    <div class="mb-3">
-                                        <div class="text-muted mb-3">П</div>
-                                        <ul class="list-unstyled">
-                                            <li class="shadow mb-3"><a
-                                                    class="contacts-item media align-items-center px-3" href="#"><img
-                                                        class="avatar" src="./images/avatar_6.jpeg" alt="Avatar">
-                                                    <div class="media-body ml-4  my-4">
-                                                        <div class="font-weight-bold m-0">Питонист Джангович</div>
-                                                        <div class="status small">Была онлайн вчера</div>
-                                                    </div>
-                                                </a></li>
-                                        </ul>
-                                    </div>
-                                </li>
-                            </ul>
-                        </div>
-                        <div class="tab-pane fade show h-100 mt-5 mx-4 active" id="chats" role="tabpanel"
-                            aria-labelledby="pills-chats-tab">
-                            <h2 class="h2 font-weight-bold">Чаты</h2>
-                            <form class="mt-4 mb-5 py-1 border-bottom border-gray">
-                                <input class="w-100 px-4 py-2 border-0 shadow-none" type="text"
-                                    placeholder="Поиск по сообщениям">
-                            </form>
-                            <ul class="h-75 block-scrollable list-unstyled">
-                                <li class="shadow mb-3"><a class="chats-item media align-items-center p-3"
-                                        href="chat.html"><img class="avatar" src="./images/avatar_4.jpeg" alt="Avatar">
-                                        <div class="media-body ml-4 mr-3 my-2 overflow-hidden">
-                                            <div class="d-flex justify-content-between">
-                                                <div class="font-weight-bold m-0">Вениамин Редакторович</div>
-                                                <div class="small text-muted">11:45</div>
-                                            </div>
-                                            <div class="small text-truncate">O_o</div>
-                                        </div>
-                                    </a></li>
-                                <li class="shadow mb-3"><a class="chats-item media align-items-center p-3" href="#"><img
-                                            class="avatar" src="./images/avatar_2.jpeg" alt="Avatar">
-                                        <div class="media-body ml-4 mr-3 my-2 overflow-hidden">
-                                            <div class="d-flex justify-content-between">
-                                                <div class="font-weight-bold m-0">Джедай Падаванов</div>
-                                                <div class="small text-muted">10:12</div>
-                                            </div>
-                                            <div class="small text-truncate">Привет, скоро третий проект? Уже скоро надо
-                                                будет выложить</div>
-                                        </div>
-                                    </a></li>
-                                <li class="shadow mb-3"><a class="chats-item media align-items-center p-3" href="#"><img
-                                            class="avatar" src="./images/avatar_3.jpeg" alt="Avatar">
-                                        <div class="media-body ml-4 mr-3 my-2 overflow-hidden">
-                                            <div class="d-flex justify-content-between">
-                                                <div class="font-weight-bold m-0">Алексей Примадонин</div>
-                                                <div class="small text-muted">08:53</div>
-                                            </div>
-                                            <div class="small text-truncate">Тесты упали &gt;_&lt;</div>
-                                        </div>
-                                    </a></li>
-                            </ul>
-                        </div>
-                        <div class="tab-pane fade h-100 mt-5 mx-4" id="profile" role="tabpanel"
-                            aria-labelledby="pills-profile-tab">
-                            <h2 class="h2 font-weight-bold">Профиль</h2>
-                            <form class="mt-4 mb-5 py-1 border-bottom border-gray">
-                                <input class="w-100 px-4 py-2 border-0 shadow-none" type="text"
-                                    placeholder="Поиск по сообщениям">
-                            </form>
-                            <div class="h-75 block-scrollable ">
-                                <div class="card mb-3 text-center border-0">
-                                    <div class="card-body"><img class="my-3 rounded-circle" width="90"
-                                            src="./images/avatar_1.jpeg" alt="User photo in profile section">
-                                        <p class="card-title mb-3 font-weight-bold">Кодовёнок Хекслетович</p>
-                                        <p class="card-text mb-6 text-muted ">Милый и скромный помощник начинающих
-                                            разработчиков. Люблю JavaScript</p>
-                                    </div>
-                                </div>
-                                <ul class="list-group list-group-flush mt-4 pt-3 px-2">
-                                    <li class="list-group-item mb-1 px-1 small border-gray">
-                                        <div class="d-flex justify-content-between">
-                                            <div>
-                                                <div class="text-muted">Страна</div>
-                                                <div>Москва, Россия</div>
-                                            </div>
-                                            <svg class="text-black-50" width="17" height="16">
-                                                <use xlink:href="./images/icons/sprite.symbol.svg#globe"></use>
-                                            </svg>
-                                        </div>
-                                    </li>
-                                    <li class="list-group-item mb-1 px-1 small border-gray">
-                                        <div class="d-flex justify-content-between">
-                                            <div>
-                                                <div class="text-muted">Телефон</div>
-                                                <div>+7 (499) 123-45-67</div>
-                                            </div>
-                                            <svg class="text-black-50" width="17" height="16">
-                                                <use xlink:href="./images/icons/sprite.symbol.svg#telephone"></use>
-                                            </svg>
-                                        </div>
-                                    </li>
-                                    <li class="list-group-item mb-1 px-1 small border-gray">
-                                        <div class="d-flex justify-content-between">
-                                            <div>
-                                                <div class="text-muted">Email</div>
-                                                <div>nikita.m@hexlet.io</div>
-                                            </div>
-                                            <svg class="text-black-50" width="17" height="16">
-                                                <use xlink:href="./images/icons/sprite.symbol.svg#envelope"></use>
-                                            </svg>
-                                        </div>
-                                    </li>
-                                    <li class="list-group-item mb-1 px-1 small border-gray">
-                                        <div class="d-flex justify-content-between">
-                                            <div>
-                                                <div class="text-muted">Twitter</div>
-                                                <div>@n__mikhaylov</div>
-                                            </div>
-                                            <svg class="text-black-50" width="17" height="16">
-                                                <use xlink:href="./images/icons/sprite.symbol.svg#people"></use>
-                                            </svg>
-                                        </div>
-                                    </li>
-                                </ul>
-                            </div>
-                        </div>
-                        <div class="d-xl-none tab-pane fade h-100 d-flex flex-column" id="current-chat">
-                            <div class="media align-items-center p-3 sticky-top border-bottom"><img class="avatar"
-                                    src="./images/avatar_4.jpeg" alt="Avatar">
-                                <div class="media-body ml-4 my-2">
-                                    <div class="font-weight-bold text-dark">Вениамин Редакторович</div>
-                                    <div class="status small text-muted">Онлайн</div>
-                                </div>
-                            </div>
-                            <div class="block-scrollable px-5 pt-5">
-                                <ul class="list-unstyled d-flex flex-column">
-                                    <li class="message media mb-3 ">
-                                        <div class="media align-items-end"><img class="d-none d-xl-block avatar mr-3"
-                                                src="./images/avatar_4.jpeg" alt="Avatar">
-                                            <div class="media-body p-4 radius shadow">
-                                                <div class="font-weight-bold mb-1 text-dark">Вениамин Редакторович</div>
-                                                <div class="pb-2 border-bottom mb-1">Да, я уже вышел и минут через 20-30
-                                                    буду у тебя. Поеду на трамвае и потом в магазин. Тебе что-то
-                                                    захватить?</div>
-                                                <div class="time small">8 минут назад</div>
-                                            </div>
-                                        </div>
-                                    </li>
-                                    <li class="message media mb-3 self">
-                                        <div class="media align-items-end"><img class="d-none d-xl-block avatar mr-3"
-                                                src="./images/avatar_1.jpeg" alt="Avatar">
-                                            <div class="media-body p-4 radius shadow">
-                                                <div class="pb-2 border-bottom mb-1">Захвати мне колы и пару печенек.
-                                                    Как-то очень сладкого хочется, а в магазин идти лень</div>
-                                                <div class="time small">5 минут назад</div>
-                                            </div>
-                                        </div>
-                                    </li>
-                                    <li class="message media mb-3 ">
-                                        <div class="media align-items-end"><img class="d-none d-xl-block avatar mr-3"
-                                                src="./images/avatar_4.jpeg" alt="Avatar">
-                                            <div class="media-body p-4 radius shadow">
-                                                <div class="font-weight-bold mb-1 text-dark">Вениамин Редакторович</div>
-                                                <div class="pb-2 border-bottom mb-1">Лады</div>
-                                                <div class="time small">5 минут назад</div>
-                                            </div>
-                                        </div>
-                                    </li>
-                                    <li class="message media mb-3 self">
-                                        <div class="media align-items-end"><img class="d-none d-xl-block avatar mr-3"
-                                                src="./images/avatar_1.jpeg" alt="Avatar">
-                                            <div class="media-body p-4 radius shadow">
-                                                <div class="pb-2 border-bottom mb-1">А, слушай, купи мне ещё Macbook
-                                                    Pro. А то хочется работать в Хекслете, а там это условие</div>
-                                                <div class="time small">3 минуты назад</div>
-                                            </div>
-                                        </div>
-                                    </li>
-                                    <li class="message media mb-3 ">
-                                        <div class="media align-items-end"><img class="d-none d-xl-block avatar mr-3"
-                                                src="./images/avatar_4.jpeg" alt="Avatar">
-                                            <div class="media-body p-4 radius shadow">
-                                                <div class="font-weight-bold mb-1 text-dark">Вениамин Редакторович</div>
-                                                <div class="pb-2 border-bottom mb-1">о_О</div>
-                                                <div class="time small">Только что</div>
-                                            </div>
-                                        </div>
-                                    </li>
-                                </ul>
-                            </div>
-                            <form
-                                class="mx-xl-5 mx-2 pr-xl-2 form-inline justify-content-between border-top border-gray py-2">
-                                <input class="flex-grow-1  p-4 border-0 shadow-none" type="text"
-                                    placeholder="Напишите сообщение...">
-                                <button class="btn btn-primary d-flex align-items-center rounded-circle p-2 mx-2"
-                                    type="submit">
-                                    <svg class="text-white" width="20" height="20">
-                                        <use xlink:href="./images/icons/sprite.symbol.svg#cursor"></use>
-                                    </svg>
-                                </button>
-                            </form>
-                        </div>
-                    </div>
+<body class="h-100">
+  <div class="container py-md-4 h-100 bg-md-gray">
+    <div class="row h-100 radius-md bg-white no-gutters overflow-md-hidden">
+      <aside
+        class="d-flex flex-column flex-grow-1 flex-md-grow-0 col-md-7 col-lg-6 col-xl-4 h-100 mx-md-0 mx-n4 overflow-md-hidden">
+        <header class="ps-4 pe-5">
+          <nav class="d-flex justify-content-space align-items-center"><a class="py-4" href="index.html"><img
+                class="logo" alt="Hexlet" src="images/icons/logo.svg"></a>
+            <ul class="nav d-flex justify-content-space cg-6 cg-md-5 flex-nowrap" role="tablist">
+              <li class="d-block d-md-none" role="presentation"><a class="d-md-flex cg-2 color-light fs-0 small-md"
+                  id="chat-tab" href="#current-chat" role="tab" data-bs-toggle="tab" aria-controls="current-chat"><img
+                    class="nav-img" alt="" src="images/icons/chat-left-text.svg">Чат</a></li>
+              <li class="nav-item" role="presentation"><a
+                  class="d-md-flex cg-2 color-light fs-0 small-md fs-0 align-items-center" id="contacts-tab"
+                  data-bs-toggle="tab" href="#contacts" role="tab" aria-controls="contacts" aria-selected="false"><img
+                    class="nav-img" alt="Контакты" src="images/icons/people.svg">Контакты</a></li>
+              <li class="nav-item" role="presentation"><a
+                  class="d-md-flex cg-2 color-light fs-0 small-md fs-0 align-items-center" id="chats-tab"
+                  data-bs-toggle="tab" href="#chats" role="tab" aria-controls="chats" aria-selected="true"><img
+                    class="nav-img" alt="Сообщения" src="images/icons/chat.svg">Сообщения</a></li>
+              <li class="nav-item" role="presentation"><a
+                  class="d-md-flex cg-2 color-light fs-0 small-md fs-0 align-items-center" id="profile-tab"
+                  data-bs-toggle="tab" href="#profile" role="tab" aria-controls="profile" aria-selected="false"><img
+                    class="nav-img" alt="Профиль" src="images/icons/person.svg">Профиль</a></li>
+            </ul>
+          </nav>
+        </header>
+        <div class="d-flex flex-column tab-content h-100 px-4 overflow-hidden">
+          <section class="tab-pane fade pt-7 hide-scrollbar" id="contacts" role="tabpanel"
+            aria-labelledby="contacts-tab">
+            <h2 class="mb-4">Контакты</h2>
+            <form class="border-bottom mb-7" action="#" name="contacts">
+              <input class="pt-3 px-4 pb-14px border-0 lh-19 w-100" type="search" placeholder="Поиск по контактам">
+            </form>
+            <div class="d-flex flex-column rg-50px">
+              <div class="d-flex flex-column rg-19px">
+                <div class="text-muted lh-19">A
                 </div>
-            </div>
-            <div class="h-100 right-side d-none d-xl-block col-xl-8">
-                <div class=" h-100 d-flex flex-column" id="current-chat-right">
-                    <div class="media align-items-center p-3 sticky-top border-bottom"><img class="avatar"
-                            src="./images/avatar_4.jpeg" alt="Avatar">
-                        <div class="media-body ml-4 my-2">
-                            <div class="font-weight-bold text-dark">Вениамин Редакторович</div>
-                            <div class="status small text-muted">Онлайн</div>
-                        </div>
+                <div class="d-flex flex-column rg-3"><a class="d-flex px-3 py-3 cg-4 shadow-sm" href=""><img
+                      class="avatar" src="images/avatar_3.jpg" alt="Алексей Примадонин">
+                    <div class="d-flex flex-column align-self-center">
+                      <div class="bold color-dark"> Алексей Примадонин
+                      </div>
+                      <div class="small lh-19 color-secondary"> Онлайн
+                      </div>
                     </div>
-                    <div class="block-scrollable px-5 pt-5">
-                        <ul class="list-unstyled d-flex flex-column">
-                            <li class="message media mb-3 ">
-                                <div class="media align-items-end"><img class="d-none d-xl-block avatar mr-3"
-                                        src="./images/avatar_4.jpeg" alt="Avatar">
-                                    <div class="media-body p-4 radius shadow">
-                                        <div class="font-weight-bold mb-1 text-dark">Вениамин Редакторович</div>
-                                        <div class="pb-2 border-bottom mb-1">Да, я уже вышел и минут через 20-30 буду у
-                                            тебя. Поеду на трамвае и потом в магазин. Тебе что-то захватить?</div>
-                                        <div class="time small">8 минут назад</div>
-                                    </div>
-                                </div>
-                            </li>
-                            <li class="message media mb-3 self">
-                                <div class="media align-items-end"><img class="d-none d-xl-block avatar mr-3"
-                                        src="./images/avatar_1.jpeg" alt="Avatar">
-                                    <div class="media-body p-4 radius shadow">
-                                        <div class="pb-2 border-bottom mb-1">Захвати мне колы и пару печенек. Как-то
-                                            очень сладкого хочется, а в магазин идти лень</div>
-                                        <div class="time small">5 минут назад</div>
-                                    </div>
-                                </div>
-                            </li>
-                            <li class="message media mb-3 ">
-                                <div class="media align-items-end"><img class="d-none d-xl-block avatar mr-3"
-                                        src="./images/avatar_4.jpeg" alt="Avatar">
-                                    <div class="media-body p-4 radius shadow">
-                                        <div class="font-weight-bold mb-1 text-dark">Вениамин Редакторович</div>
-                                        <div class="pb-2 border-bottom mb-1">Лады</div>
-                                        <div class="time small">5 минут назад</div>
-                                    </div>
-                                </div>
-                            </li>
-                            <li class="message media mb-3 self">
-                                <div class="media align-items-end"><img class="d-none d-xl-block avatar mr-3"
-                                        src="./images/avatar_1.jpeg" alt="Avatar">
-                                    <div class="media-body p-4 radius shadow">
-                                        <div class="pb-2 border-bottom mb-1">А, слушай, купи мне ещё Macbook Pro. А то
-                                            хочется работать в Хекслете, а там это условие</div>
-                                        <div class="time small">3 минуты назад</div>
-                                    </div>
-                                </div>
-                            </li>
-                            <li class="message media mb-3 ">
-                                <div class="media align-items-end"><img class="d-none d-xl-block avatar mr-3"
-                                        src="./images/avatar_4.jpeg" alt="Avatar">
-                                    <div class="media-body p-4 radius shadow">
-                                        <div class="font-weight-bold mb-1 text-dark">Вениамин Редакторович</div>
-                                        <div class="pb-2 border-bottom mb-1">о_О</div>
-                                        <div class="time small">Только что</div>
-                                    </div>
-                                </div>
-                            </li>
-                        </ul>
-                    </div>
-                    <form class="mx-xl-5 mx-2 pr-xl-2 form-inline justify-content-between border-top border-gray py-2">
-                        <input class="flex-grow-1  p-4 border-0 shadow-none" type="text"
-                            placeholder="Напишите сообщение...">
-                        <button class="btn btn-primary d-flex align-items-center rounded-circle p-2 mx-2" type="submit">
-                            <svg class="text-white" width="20" height="20">
-                                <use xlink:href="./images/icons/sprite.symbol.svg#cursor"></use>
-                            </svg>
-                        </button>
-                    </form>
+                  </a>
                 </div>
+              </div>
+              <div class="d-flex flex-column rg-19px">
+                <div class="text-muted lh-19">В
+                </div>
+                <div class="d-flex flex-column rg-3"><a class="d-flex px-3 py-3 cg-4 shadow-sm" href=""><img
+                      class="avatar" src="images/avatar_4.jpg" alt="Вениамин Редакторович">
+                    <div class="d-flex flex-column align-self-center">
+                      <div class="bold color-dark"> Вениамин Редакторович
+                      </div>
+                      <div class="small lh-19 color-secondary"> Онлайн
+                      </div>
+                    </div>
+                  </a>
+                </div>
+              </div>
+              <div class="d-flex flex-column rg-19px">
+                <div class="text-muted lh-19">Д
+                </div>
+                <div class="d-flex flex-column rg-3"><a class="d-flex px-3 py-3 cg-4 shadow-sm" href=""><img
+                      class="avatar" src="images/avatar_2.jpg" alt="Джедай Падаванов">
+                    <div class="d-flex flex-column align-self-center">
+                      <div class="bold color-dark"> Джедай Падаванов
+                      </div>
+                      <div class="small lh-19 color-secondary"> Был онлайн вчера
+                      </div>
+                    </div>
+                  </a>
+                </div>
+              </div>
+              <div class="d-flex flex-column rg-19px">
+                <div class="text-muted lh-19">К
+                </div>
+                <div class="d-flex flex-column rg-3"><a class="d-flex px-3 py-3 cg-4 shadow-sm" href=""><img
+                      class="avatar" src="images/avatar_1.jpg" alt="Кодовёнок Хекслетович">
+                    <div class="d-flex flex-column align-self-center">
+                      <div class="bold color-dark"> Кодовёнок Хекслетович
+                      </div>
+                      <div class="small lh-19 color-secondary"> Был онлайн 3 часа назад
+                      </div>
+                    </div>
+                  </a><a class="d-flex px-3 py-3 cg-4 shadow-sm" href=""><img class="avatar" src="images/avatar_5.jpg"
+                      alt="Королева Верстальщина">
+                    <div class="d-flex flex-column align-self-center">
+                      <div class="bold color-dark"> Королева Верстальщина
+                      </div>
+                      <div class="small lh-19 color-secondary"> Была онлайн вчера
+                      </div>
+                    </div>
+                  </a>
+                </div>
+              </div>
+              <div class="d-flex flex-column rg-19px">
+                <div class="text-muted lh-19">П
+                </div>
+                <div class="d-flex flex-column rg-3"><a class="d-flex px-3 py-3 cg-4 shadow-sm" href=""><img
+                      class="avatar" src="images/avatar_6.jpg" alt="Питонист Джангович">
+                    <div class="d-flex flex-column align-self-center">
+                      <div class="bold color-dark"> Питонист Джангович
+                      </div>
+                      <div class="small lh-19 color-secondary"> Был онлайн вчера
+                      </div>
+                    </div>
+                  </a>
+                </div>
+              </div>
             </div>
+          </section>
+          <section class="tab-pane fade pt-7 hide-scrollbar show active" id="chats" role="tabpanel"
+            aria-labelledby="chats-tab">
+            <h2 class="mb-4">Чаты</h2>
+            <form class="border-bottom mb-7" action="#" name="messages">
+              <input class="pt-3 px-4 pb-14px border-0 lh-19 w-100" type="search" placeholder="Поиск по сообщениям">
+            </form>
+            <div class="d-flex flex-column rg-3"><a class="d-flex cg-4 px-3 py-3  shadow-sm" href="chat.html"><img
+                  class="avatar" src="images/avatar_4.jpg" alt="Вениамин Редакторович">
+                <div class="flex-grow-1 text-hidden align-self-center">
+                  <div class="d-flex justify-content-space">
+                    <div class="bold color-dark">Вениамин Редакторович</div>
+                    <div class="small color-secondary">11:45</div>
+                  </div><span class="small lh-19 color-secondary">o_O</span>
+                </div>
+              </a><a class="d-flex cg-4 px-3 py-3  shadow-sm" href="chat.html"><img class="avatar"
+                  src="images/avatar_2.jpg" alt="Джедай Падаванов">
+                <div class="flex-grow-1 text-hidden align-self-center">
+                  <div class="d-flex justify-content-space">
+                    <div class="bold color-dark">Джедай Падаванов</div>
+                    <div class="small color-secondary">10:12</div>
+                  </div><span class="small lh-19 color-secondary">Привет, скоро третий проект? Уже скоро надо будет
+                    выложить</span>
+                </div>
+              </a><a class="d-flex cg-4 px-3 py-3  shadow-sm" href="chat.html"><img class="avatar"
+                  src="images/avatar_3.jpg" alt="Алексей Примадонин">
+                <div class="flex-grow-1 text-hidden align-self-center">
+                  <div class="d-flex justify-content-space">
+                    <div class="bold color-dark">Алексей Примадонин</div>
+                    <div class="small color-secondary">08:53</div>
+                  </div><span class="small lh-19 color-secondary">Тесты упали &gt;_&lt;</span>
+                </div>
+              </a>
+            </div>
+          </section>
+          <section class="tab-pane fade pt-7 hide-scrollbar" id="profile" role="tabpanel" aria-labelledby="profile-tab">
+            <h2 class="mb-4">Профиль</h2>
+            <form class="border-bottom mb-7" action="#" name="messags">
+              <input class="pt-3 px-4 pb-14px border-0 lh-19 w-100" type="search" placeholder="Поиск по сообщениям">
+            </form>
+            <div class="card border-0">
+              <div class="ta-center pt-5 px-4 pb-3 mb-11"><img class="avatar-90 mb-3" src="images/avatar_1.jpg"
+                  alt="Кодовёнок Хекслетович">
+                <div class="bold color-dark mb-3">Кодовёнок Хекслетович</div>
+                <div class="color-secondary">Милый и скромный помощник начинающих разработчиков. Люблю JavaScript</div>
+              </div>
+              <div class="card-body py-4 px-4">
+                <ul class="list-group">
+                  <li class="list-group-item d-flex justify-content-space border-0 border-bottom py-2">
+                    <div class="d-flex flex-column">
+                      <div class="small color-secondary">Страна</div>
+                      <div class="small color-dark">Москва, Россия</div>
+                    </div>
+                    <svg class="bi bi-globe text-black-50 align-self-center" xmlns="http://www.w3.org/2000/svg"
+                      width="16" height="16" fill="currentColor" viewBox="0 0 16 16">
+                      <path
+                        d="M0 8a8 8 0 1 1 16 0A8 8 0 0 1 0 8zm7.5-6.923c-.67.204-1.335.82-1.887 1.855A7.97 7.97 0 0 0 5.145 4H7.5V1.077zM4.09 4a9.267 9.267 0 0 1 .64-1.539 6.7 6.7 0 0 1 .597-.933A7.025 7.025 0 0 0 2.255 4H4.09zm-.582 3.5c.03-.877.138-1.718.312-2.5H1.674a6.958 6.958 0 0 0-.656 2.5h2.49zM4.847 5a12.5 12.5 0 0 0-.338 2.5H7.5V5H4.847zM8.5 5v2.5h2.99a12.495 12.495 0 0 0-.337-2.5H8.5zM4.51 8.5a12.5 12.5 0 0 0 .337 2.5H7.5V8.5H4.51zm3.99 0V11h2.653c.187-.765.306-1.608.338-2.5H8.5zM5.145 12c.138.386.295.744.468 1.068.552 1.035 1.218 1.65 1.887 1.855V12H5.145zm.182 2.472a6.696 6.696 0 0 1-.597-.933A9.268 9.268 0 0 1 4.09 12H2.255a7.024 7.024 0 0 0 3.072 2.472zM3.82 11a13.652 13.652 0 0 1-.312-2.5h-2.49c.062.89.291 1.733.656 2.5H3.82zm6.853 3.472A7.024 7.024 0 0 0 13.745 12H11.91a9.27 9.27 0 0 1-.64 1.539 6.688 6.688 0 0 1-.597.933zM8.5 12v2.923c.67-.204 1.335-.82 1.887-1.855.173-.324.33-.682.468-1.068H8.5zm3.68-1h2.146c.365-.767.594-1.61.656-2.5h-2.49a13.65 13.65 0 0 1-.312 2.5zm2.802-3.5a6.959 6.959 0 0 0-.656-2.5H12.18c.174.782.282 1.623.312 2.5h2.49zM11.27 2.461c.247.464.462.98.64 1.539h1.835a7.024 7.024 0 0 0-3.072-2.472c.218.284.418.598.597.933zM10.855 4a7.966 7.966 0 0 0-.468-1.068C9.835 1.897 9.17 1.282 8.5 1.077V4h2.355z">
+                      </path>
+                    </svg>
+                  </li>
+                  <li class="list-group-item d-flex justify-content-space border-0 border-bottom py-2">
+                    <div class="d-flex flex-column justify-content-space">
+                      <div class="small color-secondary">Телефон</div><a class="small color-dark"
+                        href="tel:+74991234567">+7 (999) 123-45-67</a>
+                    </div>
+                    <svg class="bi bi-telephone text-black-50 align-self-center" xmlns="http://www.w3.org/2000/svg"
+                      width="16" height="16" fill="currentColor" viewBox="0 0 16 16">
+                      <path
+                        d="M3.654 1.328a.678.678 0 0 0-1.015-.063L1.605 2.3c-.483.484-.661 1.169-.45 1.77a17.568 17.568 0 0 0 4.168 6.608 17.569 17.569 0 0 0 6.608 4.168c.601.211 1.286.033 1.77-.45l1.034-1.034a.678.678 0 0 0-.063-1.015l-2.307-1.794a.678.678 0 0 0-.58-.122l-2.19.547a1.745 1.745 0 0 1-1.657-.459L5.482 8.062a1.745 1.745 0 0 1-.46-1.657l.548-2.19a.678.678 0 0 0-.122-.58L3.654 1.328zM1.884.511a1.745 1.745 0 0 1 2.612.163L6.29 2.98c.329.423.445.974.315 1.494l-.547 2.19a.678.678 0 0 0 .178.643l2.457 2.457a.678.678 0 0 0 .644.178l2.189-.547a1.745 1.745 0 0 1 1.494.315l2.306 1.794c.829.645.905 1.87.163 2.611l-1.034 1.034c-.74.74-1.846 1.065-2.877.702a18.634 18.634 0 0 1-7.01-4.42 18.634 18.634 0 0 1-4.42-7.009c-.362-1.03-.037-2.137.703-2.877L1.885.511z">
+                      </path>
+                    </svg>
+                  </li>
+                  <li class="list-group-item d-flex justify-content-space border-0 border-bottom py-2">
+                    <div class="d-flex flex-column">
+                      <div class="small color-secondary">Email</div><a class="small color-dark"
+                        href="mailto:mayabessonova_16_94@mail.ru">mayabessonova_16_94@mail.ru</a>
+                    </div>
+                    <svg class="bi bi-envelope text-black-50 align-self-center" xmlns="http://www.w3.org/2000/svg"
+                      width="16" height="16" fill="currentColor" viewBox="0 0 16 16">
+                      <path
+                        d="M0 4a2 2 0 0 1 2-2h12a2 2 0 0 1 2 2v8a2 2 0 0 1-2 2H2a2 2 0 0 1-2-2V4zm2-1a1 1 0 0 0-1 1v.217l7 4.2 7-4.2V4a1 1 0 0 0-1-1H2zm13 2.383l-4.758 2.855L15 11.114v-5.73zm-.034 6.878L9.271 8.82 8 9.583 6.728 8.82l-5.694 3.44A1 1 0 0 0 2 13h12a1 1 0 0 0 .966-.739zM1 11.114l4.758-2.876L1 5.383v5.73z">
+                      </path>
+                    </svg>
+                  </li>
+                  <li class="list-group-item d-flex justify-content-space border-0 py-2">
+                    <div class="d-flex flex-column justify-content-space ">
+                      <div class="small color-secondary">Github</div><a class="small color-dark"
+                        href="mailto:https://github.com/PZhukovski">https://github.com/PZhukovski</a>
+                    </div>
+                    <svg class="bi bi-people text-black-50 align-self-center" xmlns="http://www.w3.org/2000/svg"
+                      width="16" height="16" fill="currentColor" viewBox="0 0 16 16">
+                      <path
+                        d="M15 14s1 0 1-1-1-4-5-4-5 3-5 4 1 1 1 1h8zm-7.978-1A.261.261 0 0 1 7 12.996c.001-.264.167-1.03.76-1.72C8.312 10.629 9.282 10 11 10c1.717 0 2.687.63 3.24 1.276.593.69.758 1.457.76 1.72l-.008.002a.274.274 0 0 1-.014.002H7.022zM11 7a2 2 0 1 0 0-4 2 2 0 0 0 0 4zm3-2a3 3 0 1 1-6 0 3 3 0 0 1 6 0zM6.936 9.28a5.88 5.88 0 0 0-1.23-.247A7.35 7.35 0 0 0 5 9c-4 0-5 3-5 4 0 .667.333 1 1 1h4.216A2.238 2.238 0 0 1 5 13c0-1.01.377-2.042 1.09-2.904.243-.294.526-.569.846-.816zM4.92 10A5.493 5.493 0 0 0 4 13H1c0-.26.164-1.03.76-1.724.545-.636 1.492-1.256 3.16-1.275zM1.5 5.5a3 3 0 1 1 6 0 3 3 0 0 1-6 0zm3-2a2 2 0 1 0 0 4 2 2 0 0 0 0-4z">
+                      </path>
+                    </svg>
+                  </li>
+                </ul>
+              </div>
+            </div>
+          </section>
+          <div class="tab-pane fade flex-column h-100" id="current-chat" role="tabpanel" aria-labelledby="chat-tab">
+            <div class="d-flex flex-column h-100 mt-md-0 d-md-none">
+              <div class="d-flex py-3 px-3 ms-md-0 ms-n4 position-sticky cg-4 cg-md-2 cg-lg-4"><img class="avatar"
+                  src="images/avatar_4.jpg" alt="Вениамин Редакторович">
+                <div class="d-flex flex-column align-self-center">
+                  <div class="bold color-dark">Вениамин Редакторович</div>
+                  <div class="small lh-19 color-secondary">Онлайн</div>
+                </div>
+              </div>
+              <hr class="my-0 mx-n4">
+              <div class="messages py-7 px-4 px-md-0 px-lg-7 hide-scrollbar h-100">
+                <div class="message d-flex align-items-end contact cg-4 cg-md-1 cg-lg-4 mb-3"><img
+                    class="avatar d-none d-md-block shadow-sm" src="images/avatar_4.jpg" alt="Вениамин Редакторович">
+                  <div class="d-flex flex-column p-4 p-md-3 p-lg-4 radius bg-light shadow-sm">
+                    <div class="bold color-dark pb-1">Вениамин Редакторович</div>
+                    <div class="color-secondary pb-2 border-bottom">Да, я уже вышел и минут через 20-30 буду у тебя.
+                      Поеду на трамвае и потом в магазин. Тебе что-то захватить?</div>
+                    <div class="small lh-19 color-secondary pt-1">8 минут назад</div>
+                  </div>
+                </div>
+                <div class="message d-flex align-items-end contact cg-4 cg-md-1 cg-lg-3 float-right mb-3"><img
+                    class="avatar d-none d-md-block shadow-sm" src="images/avatar_1.jpg" alt="Кодовёнок Хекслетович">
+                  <div class="d-flex flex-column p-4 p-md-3 p-lg-4 radius bg-primary shadow-sm">
+                    <div class="color-light pb-2 border-bottom">Захвати мне колы и пару печенек. Как-то очень сладкого
+                      хочется, а в магазин идти лень</div>
+                    <div class="small lh-19 color-light pt-1">5 минут назад</div>
+                  </div>
+                </div>
+                <div class="message d-flex align-items-end contact cg-4 cg-md-1 cg-lg-3 mb-3"><img
+                    class="avatar d-none d-md-block shadow-sm" src="images/avatar_4.jpg" alt="Вениамин Редакторович">
+                  <div class="d-flex flex-column p-4 p-md-3 p-lg-4 radius bg-light shadow-sm">
+                    <div class="bold color-dark pb-1">Вениамин Редакторович</div>
+                    <div class="color-secondary pb-2 border-bottom">Лады</div>
+                    <div class="small lh-19 color-secondary pt-1">5 минут назад</div>
+                  </div>
+                </div>
+                <div class="message d-flex align-items-end contact cg-4 cg-md-1 cg-lg-3 float-right mb-3"><img
+                    class="avatar d-none d-md-block shadow-sm" src="images/avatar_1.jpg" alt="Кодовёнок Хекслетович">
+                  <div class="d-flex flex-column p-4 p-md-3 p-lg-4 radius bg-primary shadow-sm">
+                    <div class="color-light pb-2 border-bottom">А, слушай, купи мне ещё Macbook Pro. А то хочется
+                      работать в Хекслете, а там это условие</div>
+                    <div class="small lh-19 color-light pt-1">3 минуты назад</div>
+                  </div>
+                </div>
+                <div class="message d-flex align-items-end contact cg-4 cg-md-1 cg-lg-3 mb-3"><img
+                    class="avatar d-none d-md-block shadow-sm" src="images/avatar_4.jpg" alt="Вениамин Редакторович">
+                  <div class="d-flex flex-column p-4 p-md-3 p-lg-4 radius bg-light shadow-sm">
+                    <div class="bold color-dark pb-1">Вениамин Редакторович</div>
+                    <div class="color-secondary pb-2 border-bottom">о_О</div>
+                    <div class="small lh-19 color-secondary pt-1">Только что</div>
+                  </div>
+                </div>
+              </div>
+              <form class="d-flex border-top mx-lg-7 pr-md-1 position-sticky bottom-0" action="#" name="contacts">
+                <input class="flex-grow-1 py-4 py-md-5 px-md-4 border-0 lh-19" type="search"
+                  placeholder="Напишите сообщение...">
+                <button
+                  class="send bg-primary br-50-percent br-58-percent color-light align-self-center cursor-pointer border-0">
+                  <svg class="bi bi-cursor send-svg" xmlns="http://www.w3.org/2000/svg" width="24" height="24"
+                    fill="currentColor" viewBox="0 0 16 16">
+                    <path
+                      d="M14.082 2.182a.5.5 0 0 1 .103.557L8.528 15.467a.5.5 0 0 1-.917-.007L5.57 10.694.803 8.652a.5.5 0 0 1-.006-.916l12.728-5.657a.5.5 0 0 1 .556.103zM2.25 8.184l3.897 1.67a.5.5 0 0 1 .262.263l1.67 3.897L12.743 3.52 2.25 8.184z">
+                    </path>
+                  </svg>
+                </button>
+              </form>
+            </div>
+          </div>
         </div>
+      </aside>
+      <main class="col-md flex-column h-100 px-0 overflow-hidden justify-content-center">
+        <div class="d-flex py-3 px-3 ms-md-0 ms-n4 position-sticky cg-4 cg-md-2 cg-lg-4"><img class="avatar"
+            src="images/avatar_4.jpg" alt="Вениамин Редакторович">
+          <div class="d-flex flex-column align-self-center">
+            <div class="bold color-dark">Вениамин Редакторович</div>
+            <div class="small lh-19 color-secondary">Онлайн</div>
+          </div>
+        </div>
+        <hr class="my-0 mx-n4">
+        <div class="messages py-7 px-4 px-md-0 px-lg-7 hide-scrollbar h-100">
+          <div class="message d-flex align-items-end contact cg-4 cg-md-1 cg-lg-4 mb-3"><img
+              class="avatar d-none d-md-block shadow-sm" src="images/avatar_4.jpg" alt="Вениамин Редакторович">
+            <div class="d-flex flex-column p-4 p-md-3 p-lg-4 radius bg-light shadow-sm">
+              <div class="bold color-dark pb-1">Вениамин Редакторович</div>
+              <div class="color-secondary pb-2 border-bottom">Да, я уже вышел и минут через 20-30 буду у тебя. Поеду на
+                трамвае и потом в магазин. Тебе что-то захватить?</div>
+              <div class="small lh-19 color-secondary pt-1">8 минут назад</div>
+            </div>
+          </div>
+          <div class="message d-flex align-items-end contact cg-4 cg-md-1 cg-lg-3 float-right mb-3"><img
+              class="avatar d-none d-md-block shadow-sm" src="images/avatar_1.jpg" alt="Кодовёнок Хекслетович">
+            <div class="d-flex flex-column p-4 p-md-3 p-lg-4 radius bg-primary shadow-sm">
+              <div class="color-light pb-2 border-bottom">Захвати мне колы и пару печенек. Как-то очень сладкого
+                хочется, а в магазин идти лень</div>
+              <div class="small lh-19 color-light pt-1">5 минут назад</div>
+            </div>
+          </div>
+          <div class="message d-flex align-items-end contact cg-4 cg-md-1 cg-lg-3 mb-3"><img
+              class="avatar d-none d-md-block shadow-sm" src="images/avatar_4.jpg" alt="Вениамин Редакторович">
+            <div class="d-flex flex-column p-4 p-md-3 p-lg-4 radius bg-light shadow-sm">
+              <div class="bold color-dark pb-1">Вениамин Редакторович</div>
+              <div class="color-secondary pb-2 border-bottom">Лады</div>
+              <div class="small lh-19 color-secondary pt-1">5 минут назад</div>
+            </div>
+          </div>
+          <div class="message d-flex align-items-end contact cg-4 cg-md-1 cg-lg-3 float-right mb-3"><img
+              class="avatar d-none d-md-block shadow-sm" src="images/avatar_1.jpg" alt="Кодовёнок Хекслетович">
+            <div class="d-flex flex-column p-4 p-md-3 p-lg-4 radius bg-primary shadow-sm">
+              <div class="color-light pb-2 border-bottom">А, слушай, купи мне ещё Macbook Pro. А то хочется работать в
+                Хекслете, а там это условие</div>
+              <div class="small lh-19 color-light pt-1">3 минуты назад</div>
+            </div>
+          </div>
+          <div class="message d-flex align-items-end contact cg-4 cg-md-1 cg-lg-3 mb-3"><img
+              class="avatar d-none d-md-block shadow-sm" src="images/avatar_4.jpg" alt="Вениамин Редакторович">
+            <div class="d-flex flex-column p-4 p-md-3 p-lg-4 radius bg-light shadow-sm">
+              <div class="bold color-dark pb-1">Вениамин Редакторович</div>
+              <div class="color-secondary pb-2 border-bottom">о_О</div>
+              <div class="small lh-19 color-secondary pt-1">Только что</div>
+            </div>
+          </div>
+        </div>
+        <form class="d-flex border-top mx-lg-7 pr-md-1 position-sticky bottom-0" action="#" name="contacts">
+          <input class="flex-grow-1 py-4 py-md-5 px-md-4 border-0 lh-19" type="search"
+            placeholder="Напишите сообщение...">
+          <button
+            class="send bg-primary br-50-percent br-58-percent color-light align-self-center cursor-pointer border-0">
+            <svg class="bi bi-cursor send-svg" xmlns="http://www.w3.org/2000/svg" width="24" height="24"
+              fill="currentColor" viewBox="0 0 16 16">
+              <path
+                d="M14.082 2.182a.5.5 0 0 1 .103.557L8.528 15.467a.5.5 0 0 1-.917-.007L5.57 10.694.803 8.652a.5.5 0 0 1-.006-.916l12.728-5.657a.5.5 0 0 1 .556.103zM2.25 8.184l3.897 1.67a.5.5 0 0 1 .262.263l1.67 3.897L12.743 3.52 2.25 8.184z">
+              </path>
+            </svg>
+          </button>
+        </form>
+      </main>
     </div>
-    <script src="./js/all.js"></script>
+  </div>
 </body>
 
 </html>

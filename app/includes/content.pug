@@ -1,0 +1,22 @@
+include aside-sections.pug
+div(class="container py-md-4 h-100 bg-md-gray")
+  div(class="row h-100 radius-md bg-white no-gutters overflow-md-hidden")
+    aside(class="d-flex flex-column flex-grow-1 flex-md-grow-0 col-md-7 col-lg-6 col-xl-4 h-100 mx-md-0 mx-n4 overflow-md-hidden")
+      include header1.pug
+      div(class="d-flex flex-column tab-content h-100 px-4 overflow-hidden")
+        +aside-sections("contacts")
+          include contacts.pug
+        +aside-sections("chats")
+          include chats.pug 
+        +aside-sections("profile")
+          include profile.pug 
+        if page == "chat"
+          div(class="tab-pane fade flex-column h-100" id="current-chat" role="tabpanel" aria-labelledby="chat-tab")
+              div(class="d-flex flex-column h-100 mt-md-0 d-md-none")
+                include messages.pug 
+    main(class="col-md flex-column h-100 px-0 overflow-hidden justify-content-center")  
+      if page == "index"
+        include avatar.pug 
+      else 
+        include messages.pug
+    
