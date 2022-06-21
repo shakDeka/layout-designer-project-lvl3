@@ -12063,7 +12063,7 @@ textarea.form-control-lg {
 
 body {
   color: #343a40;
-  font-size: 15px;
+  font-size: 16px;
   line-height: 1.5;
   border-color: #efefef;
   border-radius: 1rem;
@@ -12087,7 +12087,7 @@ h1, .h1, h2, .h2, h3, .h3, h4, .h4, h5, .h5 {
   font-weight: 700; }
 
 h2, .h2 {
-  font-size: 2rem; }
+  font-size: 1.5rem; }
 
 .text-muted {
   color: #6c757d !important; }
