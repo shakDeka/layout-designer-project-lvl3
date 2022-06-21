@@ -7007,7 +7007,7 @@ textarea.form-control-lg {
   padding-bottom: 0.25rem !important; }
 
 .py-3 {
-  padding-top: 1rem !important;
+  padding-top: 1.5rem !important;
   padding-bottom: 1rem !important; }
 
 .py-4 {
@@ -12294,7 +12294,7 @@ main {
      text-overflow: ellipsis; }
 
 .small {
-  font-size: 80%;
+  font-size: 90%;
   font-weight: 400; }
 
 .send {
