@@ -12158,8 +12158,8 @@ aside {
 .rg-3 {
   row-gap: 1rem !important; }
 
-.rg-19px {
-  row-gap: 10px; }
+/* .rg-19px {
+  row-gap: 10px; } */
 
 .rg-50px {
   row-gap: 50px; }
