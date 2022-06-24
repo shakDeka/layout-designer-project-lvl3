@@ -11389,7 +11389,7 @@ textarea.form-control-lg {
   .cg-md-5 {
     -webkit-column-gap: 2rem !important;
        -moz-column-gap: 2rem !important;
-            column-gap: 2rem !important; }
+            column-gap: 2.5rem !important; }
   .rg-md-5 {
     row-gap: 2rem !important; }
   .cg-md-6 {
@@ -11817,7 +11817,7 @@ textarea.form-control-lg {
   .cg-md-5 {
     -webkit-column-gap: 2rem !important;
        -moz-column-gap: 2rem !important;
-            column-gap: 2rem !important; }
+            column-gap: 2.5rem !important; }
   .rg-md-5 {
     row-gap: 2rem !important; }
   .cg-md-6 {
