@@ -1,48 +1,13 @@
 $enable-shadows: true;
-$enable-negative-margins: true;
-$theme-colors:   (
-  "primary":    #4545a5,
-  "secondary":  #6c757d,
-  "success":    #28a745,
-  "info":       #17a2b8,
-  "warning":    #ffc107,
-  "danger":     #dc3545,
-  "light":      #fbfbfb,
-  "dark":       #343a40,
-  "gray":       #efefef
-);
-
-@function theme-color($key: "primary") {
-  @return map-get($theme-colors, $key);
-}
-
-$grid-gutter-width: 3rem;
-
-$grid-breakpoints: (
-  xs: 0,
-  sm: 576px,
-  md: 768px,
-  lg: 992px,
-  xl: 1200px,
-  xxl: 1600px
-);
-
-$container-max-widths: (
-  xxl: 1540px
-);
-
-$spacer: 1rem;
-
-$spacers: (
-  0: 0,
-  1: ($spacer * 0.25),
-  3: ($spacer * 1),
-  4: ($spacer * 1.5),
-  5: ($spacer * 2),
-  6: ($spacer * 2.5),
-  7: ($spacer * 3),
-  8: ($spacer * 4.5),
-  9: ($spacer * 5),
-  10: ($spacer * 5.5),
-  11: ($spacer * 6),
-);
+$primary: #4545a5;
+$gray: #efefef;
+$secondary: #6c757d;
+$success: #28a745;
+$info: #17a2b8;
+$warning: #ffc107;
+$danger: #dc3545;
+$light: #fbfbfb;
+$dark: #343a40;
+$body-bg: $gray;
+$border-color: $gray;
+$input-plaintext-color: $secondary;

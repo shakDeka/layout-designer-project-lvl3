@@ -1,53 +1,58 @@
 const { src, dest, parallel, series, watch } = require('gulp');
-const del = require('del');
+const sass = require('gulp-sass')(require('sass'));
 const pug = require('gulp-pug');
-const sourcemaps = require('gulp-sourcemaps');
-const sass = require('gulp-sass');
-const concat = require('gulp-concat');
-const autoprefixer = require('gulp-autoprefixer');
+const browserSync = require('browser-sync').create();
 const svgSprite = require('gulp-svg-sprite');
-const imagemin = require('gulp-imagemin');
 
-const config = {
-    mode: {
-        stack: {
-            sprite: "../sprite.svg"
-        }
-    }
+const browserSyncJob = () => {
+  browserSync.init({
+    server: "build/"
+  });
+
+  watch('app/scss/**/*.scss', buildSass);
+  watch('app/pages/**/*.pug', buildPug);
 };
 
-const cleanDist = () => del('build/**/*', { force: true });
+const buildSass = () => {
+  console.log('Compiling SASS');
 
-const buildHtml = () => src('app/*.pug')
-    .pipe(pug({
-        pretty: true
-    }))
-    .pipe(dest('build'));
-
-const buildCss = () => src(['app/scss/app.scss'])
-    .pipe(sourcemaps.init())
+  return src('app/scss/main.scss')
     .pipe(sass())
-    .pipe(concat('style.css'))
-    .pipe(autoprefixer({ overrideBrowserslist: ['last 10 versions'], grid: true }))
-    .pipe(sourcemaps.write())
-    .pipe(dest('build'));
+    .pipe(dest('build/styles/'))
+    .pipe(browserSync.stream());
+}
 
-const buildSvg = () => src('app/images/icons/*.svg')
-    .pipe(svgSprite(config))
-    .pipe(dest('build/images'));
+const buildPug = () => {
+  console.log('Compiling Pug');
 
-const buildImages = () => src('app/images/*.*')
-    .pipe(imagemin())
-    .pipe(dest('build/images'));
+  return src('app/pages/*.pug')
+    .pipe(pug())
+    .pipe(dest('build/'))
+    .pipe(browserSync.stream());
+}
 
-const copyJs = () => src(['node_modules/jquery/dist/jquery.min.js', 'node_modules/popper.js/dist/umd/popper.js', 'node_modules/bootstrap/dist/js/bootstrap.min.js'])
-    .pipe(dest('build/js'));
+const copyImages = () => {
+  console.log('Copying images');
 
-const startWatch = () => {
-    watch('app/**/*.pug', buildHtml);
-    watch('app/scss/**/*.scss', buildCss);
-    watch('app/images/icons/*.svg', buildSvg);
-    watch('app/images/*', buildImages);
-};
+  return src('app/images/*.jpg').pipe(dest('build/images'))
+}
 
-exports.default = series(cleanDist, parallel(buildHtml, buildCss, buildSvg, buildImages, copyJs), startWatch); 
+const prepareSvg = () => {
+  console.log('Preparing SVGs');
+
+  const config = {
+    mode: {
+      symbol: {
+        sprite: 'sprite.svg'
+      }
+    }
+  }
+
+  return src('app/images/icons/*.svg').pipe(svgSprite(config)).pipe(dest('build/images'))
+}
+
+const build = parallel(buildSass, buildPug, copyImages, prepareSvg);
+
+exports.server = browserSyncJob;
+exports.build = build;
+exports.dev = series(build, browserSyncJob);

@@ -1,0 +1,14 @@
+include avatar
+mixin message(name, message, timestamp, avatar)
+  - const href = name == 'Вениамин Редакторович' ? 'chat.html' : '#'
+
+  a.text-decoration-none.text-black(href= href)
+    div.mb-3.d-flex.shadow-sm.justify-content-start.card-component.text-truncate.ps-3.pt-4.pb-3.pe-4
+      div.align-self-center
+        +avatar(avatar)
+      div.ms-4.align-self-center.message.d-flex.flex-column.flex-grow-1
+        div.d-inline-flex.justify-content-between
+          div.fw-bold.mb-0.me-1= name
+          div.status.small.fw-light.opacity-50.mb-0.ms-auto.me-3= timestamp
+        div.status.pb-1.fw-light.text-truncate
+          small= message
