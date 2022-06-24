@@ -29,14 +29,16 @@
     "dev": "gulp dev",
     "build": "gulp build",
     "lintcss": "npx stylelint --fix ./app/scss/**/*.scss",
+    "deploy": "surge --domain noisy-bedroom.surge.sh build/"
   },
   "repository": {
     "type": "git",
-    "url": "git+https://github.com/shakDeka/layout-designer-tools-project-lvl3.git"
+    "url": "git+https://github.com/skoch13/layout-designer-tools-project-lvl3.git"
   },
   "author": "shakDeka",
   "license": "ISC",
   "bugs": {
-    "url": "https://github.com/shakDeka/layout-designer-project-lvl3/issues"
-  }
+    "url": "https://github.com/skoch13/layout-designer-tools-project-lvl3/issues"
+  },
+  "homepage": "https://github.com/skoch13/layout-designer-tools-project-lvl3#readme"
 }
